@@ -63,6 +63,13 @@ block content
                       p.edited-by Last edited by 
                       span.message-username #{message.editUser.username}
                     p.message-date= message.editDate
+            else if (user && !user.member)
+              p.message-text= message.text
+              div.message-info
+                div.message-info-left
+                  p.posted-by Posted by 
+                  span.message-username Anonymous
+                p Date: N/A
             else
               p.message-text Sign up & become a member to see this message!
               div.message-info
