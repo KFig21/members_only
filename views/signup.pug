@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div.form-container
+    form.auth-form(action="/signup" method="POST")
+      div.form-input-container
+        input#username(type="text" name="username" required="true" maxLength="12" placeholder="Username")
+        if (error)
+          p(style="color: red;") #{error}
+      div.form-input-container
+        input#password(type="password" name="password" required="true" placeholder="Password")
+      div.form-input-container
+        input#confirmPassword(type="password" name="confirmPassword" required="true" placeholder="Confirm Password")
+        if (passwordConfirmationError)
+          p(style="color: red;") #{passwordConfirmationError}
+      div.form-input-container
+        input#emoji(type="text" name="emoji" required="true" maxLength="2" placeholder="Use 1 emoji or 2 characters")
+        a.emoji-list(href="https://getemoji.com/" target="_blank" rel="noopener noreferrer" title="getemoji.com")
+          p ☺
+        if (error)
+          p(style="color: red;") #{error}
+      button(type="submit") Register
+
+    if (errors)
+      p #{errors}

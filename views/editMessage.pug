@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  div.edit-container
+    div.form-container
+      form.auth-form(action="" method="POST")
+        div.form-input-container
+          textArea#messageText(type="text" name="messageText" required="true" maxLength="280" placeholder="Type your message here")= message.text
+        input#messageId(type="hidden", name="messageId", required="true", value=message._id)
+        input#user(type="hidden", name="user", required="true", value=message.user)
+        input#timestamp(type="hidden", name="timestamp", required="true", value=message.timestamp)
+        button(type="submit") Edit Message
+
+      if (errors)
+        p #{errors}

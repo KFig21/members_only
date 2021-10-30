@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  div.edit-container
+    div.form-container
+      form.auth-form(action="" method="POST")
+        div.form-input-container
+          div#messageText.delete-message-text= message.text
+        input#messageId(type="hidden", name="messageId", required="true", value=message._id)
+        button(type="submit") Delete Message
+
+      if (errors)
+        p #{errors}

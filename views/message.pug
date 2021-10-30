@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+  div.form-container
+    form.auth-form(action="/create-message" method="POST")
+      div.form-input-container
+        textArea#messageText(type="text" name="messageText" required="true" maxLength="280" placeholder="Type your message here")
+      button(type="submit") Submit Message
+
+    if (errors)
+      p #{errors}

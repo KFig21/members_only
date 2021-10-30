@@ -1,0 +1,69 @@
+extends layout 
+
+block content 
+  div.profile-container
+    div.profile-header-container
+      if (user && user.admin || user && user.username === profile.username)
+        a(href="/user/" + profile.id + "/edit") 
+          p.edit-profile-icon(type="submit") ✎
+      div.user-container
+        h1.profile-emoji= profile.emoji
+        div.user-subheader
+          h1.profile-name= profile.username
+          if (user && profile.member)
+            p.user-subheader-data ✔️ Member
+          if (user && profile.admin)
+            p.user-subheader-data 🐱‍👤 Admin
+      if (errors)
+        p #{errors}
+    div.profile-messages-container
+      each message in messages 
+        div.profile-message-container
+          div.profile-message-container-inner
+            if (user && user.member)
+              p.message-text= message.text
+                div.message-info-container
+                div.message-info
+                  if (user && user.member)
+                  div.message-info-left
+                    p.posted-by Posted by 
+                    span.message-username #{message.user.username}
+                  p.message-date= message.date
+                if (user && message.edited)
+                  div.message-info-edited
+                    if (user && user.member)
+                    div.message-info-left
+                      p.edited-by Last edited by 
+                      span.message-username #{message.editUser.username}
+                    p.message-date= message.editDate
+            else
+              p.message-text= message.text
+              div.message-info
+                div.message-info-left
+                  p.posted-by Posted by 
+                  span.message-username Anonymous
+                p Date: N/A
+            if (user && user.admin || user && user.username === message.user.username)
+              div.edit-message
+                a(href="/edit-message/"+message.id) 
+                  button.edit-message-button(type="submit") Edit
+                a(href="/delete-message/"+message.id) 
+                  button.delete-message-button(type="submit") Delete
+      if (user && profile.username === 'KFig21')
+        div.profile-message-container
+          div.profile-message-container-inner
+            p.message-text 
+              |Members Only was built with NodeJs, Express, and Mongo Db as an example of website authentication. This project was made for The Odin Project's NodeJs curriculum by 
+              strong(style="color: #ffed97; text-decoration: underline") KFig21
+              | . Find me on 
+              a(href="https://github.com/KFig21" target="_blank" rel="noopener noreferrer" style="color: #005834; font-weight: bold")  Github
+              |, 
+              a(href="https://leetcode.com/KFig21/" target="_blank" rel="noopener noreferrer" style="color: #ffed25; font-weight: bold")  LeetCode
+              |, or check out 
+              a(href="https://kfig21.github.io/portfolio_2021/" target="_blank" rel="noopener noreferrer" style="color: #203d62; font-weight: bold")  my porfolio
+              |.
+            div.message-info
+              div.message-info-left
+                p.posted-by Posted by 
+                span.message-username KFig21
+              p.message-date Oct 29, 2021, 12:30 PM

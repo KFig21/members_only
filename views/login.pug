@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div.form-container
+    form.auth-form(action="/login" method="POST")
+      div.form-input-container
+        input#username(type="text" name="username" required="true" placeholder="Username")
+
+      div.form-input-container 
+        input#password(type="password" name="password" required="true" placeholder="Password")
+      button(type="submit") Login
+
+    if (errors)
+      p #{errors}

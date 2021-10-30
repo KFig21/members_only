@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div.form-container
+    if (!user.member)  
+      form.auth-form(action="/member" method="POST")
+        div.form-input-container
+          input#passcode(type="password" name="passcode" required="true" placeholder="Enter the member password")
+          if (passcodeError)
+            p(style="color: red") #{passcodeError}
+        button(type="submit") Submit Password
+
+      if (errors)
+        p #{errors}
+
+    else
+      div(style="width: auto; margin: 0 auto; text-align: center")
+        h2 Congrats! You're a member!
+        a(href="/")

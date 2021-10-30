@@ -1,0 +1,98 @@
+extends layout
+
+block content
+  if (messages)
+    div.messages-container
+      if (!user || !user.member)
+        div.message-container
+          div.message-container-inner-left
+            div.message-emoji 🤖
+          div.message-container-inner-right
+            p.message-text 
+              |Register an account and log in, then use the members password 
+              strong "MEMBERSRULE" 
+              |to become a member of the club!
+            div.message-info
+              div.message-info-left
+                p.posted-by Posted by 
+                span.message-username AdminBot
+              p.message-date Oct 29, 2021, 12:34 PM
+        div.message-container
+          div.message-container-inner-left
+            div.message-emoji 😼
+          div.message-container-inner-right
+            p.message-text 
+              |Members Only was built with NodeJs, Express, and Mongo Db as an example of website authentication. This project was made for The Odin Project's NodeJs curriculum by 
+              strong(style="color: #ffed97; text-decoration: underline") KFig21
+              | . Find me on 
+              a(href="https://github.com/KFig21" target="_blank" rel="noopener noreferrer" style="color: #005834; font-weight: bold")  Github
+              |, 
+              a(href="https://leetcode.com/KFig21/" target="_blank" rel="noopener noreferrer" style="color: #ffed25; font-weight: bold")  LeetCode
+              |, or check out 
+              a(href="https://kfig21.github.io/portfolio_2021/" target="_blank" rel="noopener noreferrer" style="color: #203d62; font-weight: bold")  my porfolio
+              |.
+            div.message-info
+              div.message-info-left
+                p.posted-by Posted by 
+                span.message-username KFig21
+              p.message-date Oct 29, 2021, 12:30 PM
+      each message in messages
+        div.message-container
+          div.message-container-inner-left
+            if (!user || !user.member) 
+              div.message-emoji ❓
+            else 
+              if (user && user.member)
+                a(href="/user/" + message.user.id).message-a 
+                  div.message-emoji(title= message.user.username ) #{message.user.emoji}
+          div.message-container-inner-right
+            //- Render usernames of messages only if the user is logged in and is a member
+            if (user && user.member)
+              p.message-text= message.text
+              div.message-info-container
+                div.message-info
+                  if (user && user.member)
+                  div.message-info-left
+                    p.posted-by Posted by 
+                    span.message-username #{message.user.username}
+                  p.message-date= message.date
+                if (user && message.edited)
+                  div.message-info-edited
+                    if (user && user.member)
+                    div.message-info-left
+                      p.edited-by Last edited by 
+                      span.message-username #{message.editUser.username}
+                    p.message-date= message.editDate
+            else
+              p.message-text Sign up & become a member to see this message!
+              div.message-info
+                div.message-info-left
+                  p.posted-by Posted by 
+                  span.message-username Anonymous
+                p Date: N/A
+            if (user && user.admin || user && user.username === message.user.username)
+              div.edit-message
+                a(href="/edit-message/"+message.id) 
+                  button.edit-message-button(type="submit") Edit
+                a(href="/delete-message/"+message.id) 
+                  button.delete-message-button(type="submit") Delete
+      div.message-container
+        div.message-container-inner-left
+          div.message-emoji 😼
+        div.message-container-inner-right
+          p.message-text 
+            |Members Only was built with NodeJs, Express, and Mongo Db as an example of website authentication. This project was made for The Odin Project's NodeJs curriculum by 
+            strong(style="color: #ffed97; text-decoration: underline") KFig21
+            | . Find me on 
+            a(href="https://github.com/KFig21" target="_blank" rel="noopener noreferrer" style="color: #005834; font-weight: bold")  Github
+            |, 
+            a(href="https://leetcode.com/KFig21/" target="_blank" rel="noopener noreferrer" style="color: #ffed25; font-weight: bold")  LeetCode
+            |, or check out 
+            a(href="https://kfig21.github.io/portfolio_2021/" target="_blank" rel="noopener noreferrer" style="color: #203d62; font-weight: bold")  my porfolio
+            |.
+          div.message-info
+            div.message-info-left
+              p.posted-by Posted by 
+              span.message-username KFig21
+            p.message-date Oct 29, 2021, 12:30 PM
+        
