@@ -6,7 +6,6 @@ var async = require("async");
 exports.index = async (req, res, next) => {
   try {
     // Populate message with "user" information (reference to user in model)
-    console.log(req.user);
     const messages = await Message.find()
       .sort([["timestamp", "descending"]])
       .populate("user")
@@ -44,7 +43,6 @@ exports.user_get = (req, res, next) => {
       },
     },
     function (err, results) {
-      console.log("results", results);
       if (err) {
         return next(err);
       }
@@ -123,7 +121,7 @@ exports.edit_user_post = [
 
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages.
-      console.log("ERRORs", errors);
+
       // Get all brands and categories for form
       async.parallel(
         {
@@ -132,7 +130,6 @@ exports.edit_user_post = [
           },
         },
         function (err, results) {
-          console.log("results", results);
           if (err) {
             return next(err);
           }

@@ -47,7 +47,6 @@ exports.edit_message_get = (req, res, next) => {
     // Users not logged in cannot access "create a message page"
     return res.redirect("/log-in");
   }
-  console.log(req.params);
   async.parallel(
     {
       message: function (callback) {
@@ -55,7 +54,6 @@ exports.edit_message_get = (req, res, next) => {
       },
     },
     function (err, results) {
-      console.log("MESSAGE", results.message);
       if (err) {
         return next(err);
       }
@@ -82,7 +80,6 @@ exports.edit_message_post = [
 
   // Process request after validation and sanitization.
   (req, res, next) => {
-    console.log("user", req.user);
     // Extract the validation errors from a request.
     const errors = validationResult(req);
     // Create a Message object with escaped and trimmed data.
@@ -98,7 +95,7 @@ exports.edit_message_post = [
 
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages.
-      console.log("ERRORs", errors);
+
       // Get all brands and categories for form
       async.parallel(
         {
@@ -107,7 +104,6 @@ exports.edit_message_post = [
           },
         },
         function (err, results) {
-          console.log("MESSAGE", results.message);
           if (err) {
             return next(err);
           }
@@ -151,7 +147,6 @@ exports.delete_message_get = (req, res, next) => {
       },
     },
     function (err, results) {
-      console.log("MESSAGE", results.message);
       if (err) {
         return next(err);
       }
