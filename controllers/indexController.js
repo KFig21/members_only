@@ -54,7 +54,7 @@ exports.user_get = (req, res, next) => {
       }
       // Successful, so render.
       res.render("user", {
-        title: "User page",
+        title: results.userProfile.username + " - Members Only",
         user: req.user,
         profile: results.userProfile,
         messages: results.messages,
@@ -87,7 +87,7 @@ exports.edit_user_get = (req, res, next) => {
       }
       // Successful, so render.
       res.render("editUser", {
-        title: "Edit user details",
+        title: "Edit User Details - Members Only",
         user: req.user,
         profile: results.userProfile,
       });
@@ -141,7 +141,7 @@ exports.edit_user_post = [
           }
           // Successful, so render.
           res.render("editUser", {
-            title: "Edit user details",
+            title: "Edit User Details - Members Only",
             user: req.user,
             profile: results.userProfile,
           });

@@ -39,7 +39,7 @@ exports.signup_post = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render("signup", {
-        title: "Sign Up",
+        title: "Sign Up - Members Only",
         passwordConfirmationError: "Passwords must be the same",
       });
     }
@@ -48,7 +48,7 @@ exports.signup_post = [
       const isUserInDB = await User.find({ username: req.body.username });
       if (isUserInDB.length > 0)
         return res.render("signup", {
-          title: "Sign Up",
+          title: "Sign Up - Members Only",
           error: "User already exists",
         });
       // If username does not exist, continute to register new user to db
@@ -71,7 +71,7 @@ exports.signup_post = [
 exports.login_get = (req, res) => {
   // If user is already logged in, redirect them to the homepage
   if (res.locals.currentUser) return res.redirect("/");
-  res.render("login", { title: "Login" });
+  res.render("login", { title: "Login - Members Only" });
 };
 
 exports.login_post = passport.authenticate("local", {

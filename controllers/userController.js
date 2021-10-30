@@ -8,7 +8,7 @@ exports.member_get = (req, res, next) => {
     return res.redirect("/log-in");
   }
   return res.render("member", {
-    title: "Become a Member",
+    title: "Become a Member - Members Only",
     user: res.locals.currentUser,
   });
 };
@@ -26,13 +26,13 @@ exports.member_post = [
     if (!errors.isEmpty()) {
       // If there is an error submitting the member validation form, re-render the form with an error
       return res.render("member", {
-        title: "Become a Member",
+        title: "Become a Member - Members Only",
         user: res.locals.currentUser,
         errors: errors.array(),
       });
     } else if (req.body.passcode != process.env.MEMBER_PASSCODE) {
       return res.render("member", {
-        title: "Become a Member",
+        title: "Become a Member - Members Only",
         user: res.locals.currentUser,
         passcodeError: "Wrong Passcode",
       });
@@ -59,7 +59,7 @@ exports.admin_get = (req, res, next) => {
     return res.redirect("/log-in");
   }
   return res.render("admin", {
-    title: "Become an Admin",
+    title: "Become an Admin - Members Only",
     user: res.locals.currentUser,
   });
 };
@@ -77,13 +77,13 @@ exports.admin_post = [
     if (!errors.isEmpty()) {
       // If there is an error submitting the member validation form, re-render the form with an error
       return res.render("admin", {
-        title: "Become an Admin",
+        title: "Become an Admin - Members Only",
         user: res.locals.currentUser,
         errors: errors.array(),
       });
     } else if (req.body.passcode != process.env.ADMIN_PASSCODE) {
       return res.render("admin", {
-        title: "Become an Admin",
+        title: "Become an Admin - Members Only",
         user: res.locals.currentUser,
         passcodeError: "Wrong Passcode",
       });

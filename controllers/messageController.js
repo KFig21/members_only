@@ -8,7 +8,7 @@ exports.create_message_get = (req, res, next) => {
     return res.redirect("/log-in");
   }
   res.render("message", {
-    title: "Create a Message",
+    title: "Create a Message - Members Only",
     user: res.locals.currentUser,
   });
 };
@@ -24,7 +24,7 @@ exports.create_message_post = [
 
     if (!errors.isEmpty()) {
       res.render("message", {
-        title: "Create a Message",
+        title: "Create a Message - Members Only",
         errors: errors.array(),
       });
     }
@@ -64,7 +64,7 @@ exports.edit_message_get = (req, res, next) => {
         return next(err);
       }
       res.render("editMessage", {
-        title: "Edit Message",
+        title: "Edit Message - Members Only",
         message: results.message,
         user: res.locals.currentUser,
       });
@@ -114,7 +114,7 @@ exports.edit_message_post = [
             return next(err);
           }
           res.render("edit", {
-            title: "Edit Message",
+            title: "Edit Message - Members Only",
             message: results.message,
             user: res.locals.currentUser,
             errors: errors.array(),
@@ -157,7 +157,7 @@ exports.delete_message_get = (req, res, next) => {
         return next(err);
       }
       res.render("delete", {
-        title: "Delete Message",
+        title: "Delete Message - Members Only",
         message: results.message,
         user: res.locals.currentUser,
       });
