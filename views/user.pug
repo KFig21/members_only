@@ -11,9 +11,13 @@ block content
         div.user-subheader
           h1.profile-name= profile.username
           if (user && profile.member)
-            p.user-subheader-data ✔️ Member
+            p.user-subheader-data 
+              span.subheader-data-icon ✔️
+              span.subheader-data-text Member
           if (user && profile.admin)
-            p.user-subheader-data 🐱‍👤 Admin
+            p.user-subheader-data
+              span.subheader-data-icon 🐱‍👤
+              span.subheader-data-text Admin
       if (errors)
         p #{errors}
     div.profile-messages-container

@@ -80,10 +80,13 @@ nav ul a {
   color: whitesmoke;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 600;
   margin: 0px 14px;
   padding: 8px 14px;
   border-radius: 3px;
+}
+nav ul .nav-text {
+  font-weight: 600;
+
 }
 nav ul a li {
   display: flex;
@@ -495,6 +498,7 @@ nav ul a:hover {
 .profile-emoji {
   font-size: 100px;
   padding: 10px;
+  font-weight: 500;
 }
 
 .profile-name {
@@ -512,6 +516,11 @@ nav ul a:hover {
 .user-subheader-data {
   font-size: 16px;
   font-weight: 700;
+}
+
+.subheader-data-icon{
+  font-weight: 500;
+  margin-right: 5px
 }
 
 .edit-profile-icon {
@@ -584,6 +593,7 @@ nav ul a:hover {
   .profile-emoji {
     font-size: 75px;
     padding: 6px;
+    font-weight: 500;
   }
 
   .profile-name {
