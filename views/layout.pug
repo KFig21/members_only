@@ -35,15 +35,15 @@ html
         if (!user)
           div.desktop-nav
             ul 
-              a(href="/login") 
+              a.nav-text(href="/login") 
                 li Log in
-              a(href="/signup")
+              a.nav-text(href="/signup")
                 li Sign up
           div.mobile-nav-no-user
             ul
-              a(href="/login") 
+              a.nav-text(href="/login") 
                 li.no-user-nav-button Log in
-              a(href="/signup")
+              a.nav-text(href="/signup")
                 li.no-user-nav-button Sign up
         //- If User IS logged in
         else 
