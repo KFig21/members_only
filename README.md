@@ -23,6 +23,10 @@
   <li>Responsive design for desktop and mobile.</li>
  </ul>
  
+<h3>Demo GIF</h3>
+
+![](demo.gif)
+
  ---
 
 <h3>Thanks for checking out my project! Any && all feedback is appreciated!</h3>
