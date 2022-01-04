@@ -1,6 +1,6 @@
 # Members Only
 
-<p><a href="https://kfig21.github.io/members_only/" target="_blank" rel="noopener noreferrer">View the project here!</a> 👀</p>
+<p><a href="https://afternoon-depths-77299.herokuapp.com/" target="_blank" rel="noopener noreferrer">View the project here!</a> 👀</p>
 
 
 <h3>Summary</h3>
@@ -8,6 +8,7 @@
 
  <h3>Technologies:</h3>
   <ul>
+  <li>MongoDB</li>
   <li>Express</li>
   <li>NodeJS</li>
   <li>PassportJS</li>
